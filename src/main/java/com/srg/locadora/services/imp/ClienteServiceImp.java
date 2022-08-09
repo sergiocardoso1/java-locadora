@@ -64,12 +64,12 @@ public class ClienteServiceImp implements ClienteService{
 	}
 	
 	public Cliente fromDTO (ClienteDTO objDto) {
-		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getCpf(), objDto.getEmail());
+		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getCpf(), objDto.getEmail(), objDto.getTelefone());
 	}
 	
 	public Cliente fromDTO(ClienteNewDTO objDTO) {
 		Cidade cidade = new Cidade(objDTO.getCidadeId(), null, null);
-		Cliente cliente = new Cliente(null, objDTO.getNome(), objDTO.getCpf(), objDTO.getEmail());
+		Cliente cliente = new Cliente(null, objDTO.getNome(), objDTO.getCpf(), objDTO.getEmail(), objDTO.getTelefone());
 		Endereco end = new Endereco(null, objDTO.getLogradouro(), objDTO.getNumero(), objDTO.getComplemento(), objDTO.getBairro(), objDTO.getCep(), cliente, cidade);
 		cliente.setEndereco(end);
 		return cliente;
@@ -79,5 +79,6 @@ public class ClienteServiceImp implements ClienteService{
 		newObj.setEmail(obj.getEmail());
 		newObj.setNome(obj.getNome());
 		newObj.setCpf(obj.getCpf());
+		newObj.setTelefone(obj.getTelefone());
 	}
 }

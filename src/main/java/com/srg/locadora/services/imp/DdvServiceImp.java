@@ -70,6 +70,7 @@ public class DdvServiceImp implements DvdService{
 	public Dvd fromDTO(DvdNewDTO objDTO) {
 		Dvd obj = new Dvd();
 		obj.setNome(objDTO.getNome());
+		obj.setQuantidadeEmEstoque(objDTO.getQuantidadeEmEstoque());
 		obj.setEditora(editoraService.findId(objDTO.getIdEditora()));
 		return obj;
 	}

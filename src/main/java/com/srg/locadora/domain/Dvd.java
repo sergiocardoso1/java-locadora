@@ -36,6 +36,8 @@ public class Dvd implements Serializable{
 	@OneToMany(mappedBy = "id.dvd")
 	private Set<ItemPedido> itens = new HashSet<>();
 	
+	private Integer quantidadeEmEstoque;
+	
 	public Dvd() {
 	}
 
@@ -84,6 +86,14 @@ public class Dvd implements Serializable{
 
 	public void setItens(Set<ItemPedido> itens) {
 		this.itens = itens;
+	}
+
+	public Integer getQuantidadeEmEstoque() {
+		return quantidadeEmEstoque;
+	}
+
+	public void setQuantidadeEmEstoque(Integer quantidadeEmEstoque) {
+		this.quantidadeEmEstoque = quantidadeEmEstoque;
 	}
 
 	@Override

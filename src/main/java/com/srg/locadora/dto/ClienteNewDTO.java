@@ -5,6 +5,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.srg.locadora.services.validations.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDTO {
 	
 	@NotEmpty(message = "Preenchimento obrigatório")

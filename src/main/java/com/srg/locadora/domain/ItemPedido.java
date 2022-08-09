@@ -8,6 +8,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.srg.locadora.dto.DvdFindDTO;
 
 @Entity
 public class ItemPedido implements Serializable {
@@ -46,7 +47,16 @@ public class ItemPedido implements Serializable {
 		id.setPedido(pedido);
 	}
 	
-	public Dvd getDvd() {
+	public DvdFindDTO getDvd() {
+		DvdFindDTO obj = new DvdFindDTO();
+		obj.setId(id.getDvd().getId());
+		obj.setEditora(id.getDvd().getEditora());
+		obj.setNome(id.getDvd().getNome());
+		obj.setQuantidadeEmEstoque(id.getDvd().getQuantidadeEmEstoque());
+		return obj;
+	}
+	
+	public Dvd alterarDvd() {
 		return id.getDvd();
 	}
 	
@@ -117,9 +127,9 @@ public class ItemPedido implements Serializable {
 		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 		StringBuilder builder = new StringBuilder();
 		builder.append(getDvd().getNome());
-		builder.append(", Qte: ");
+		builder.append(", Qte dia de aluguel: ");
 		builder.append(getQuantidadeDeDiasDeAluguel());
-		builder.append(", Preço unitário: ");
+		builder.append(", Preço unitário por dia: ");
 		builder.append(nf.format(getPrecoPorDia()));
 		builder.append(", Subtotal: ");
 		builder.append(nf.format(getSubTotal()));

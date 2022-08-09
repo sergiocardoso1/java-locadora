@@ -4,8 +4,6 @@ public class BR {
 	// CPF
 	private static final int[] weightSsn = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
-	// CNPJ
-	private static final int[] weightTin = { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
 
 	private static int calculate(final String str, final int[] weight) {
 		int sum = 0;
@@ -32,18 +30,4 @@ public class BR {
 		return ssn.equals(ssn.substring(0, 9) + digit1.toString() + digit2.toString());
 	}
 
-	/**
-	 * Valida CNPJ
-	 *
-	 * @param tin
-	 * @return
-	 */
-	public static boolean isValidCNPJ(final String tin) {
-		if ((tin == null) || (tin.length() != 14) || tin.matches(tin.charAt(0) + "{14}"))
-			return false;
-
-		final Integer digit1 = calculate(tin.substring(0, 12), weightTin);
-		final Integer digit2 = calculate(tin.substring(0, 12) + digit1, weightTin);
-		return tin.equals(tin.substring(0, 12) + digit1.toString() + digit2.toString());
-	}
 }

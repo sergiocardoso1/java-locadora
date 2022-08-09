@@ -26,6 +26,8 @@ public class ClienteDTO implements Serializable {
 	
 	private String cpf;
 	
+	private String telefone;
+	
 	public ClienteDTO () {
 	}
 	
@@ -33,6 +35,7 @@ public class ClienteDTO implements Serializable {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.email = obj.getEmail();
+		this.setTelefone(obj.getTelefone());
 	}
 	
 
@@ -66,6 +69,14 @@ public class ClienteDTO implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 }

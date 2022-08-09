@@ -2,14 +2,10 @@ package com.srg.locadora.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +23,6 @@ public class Cliente implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
-	
 	public String nome;
 	public String cpf;
 	
@@ -41,19 +36,18 @@ public class Cliente implements Serializable{
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 	
-	@ElementCollection
-	@CollectionTable(name = "TELEFONE")
-	private Set<String> telefones = new HashSet<>();
+	private String telefone;
 	
 	public Cliente() {
 	}
 
-	public Cliente(Long id, String nome, String cpf, String email) {
+	public Cliente(Long id, String nome, String cpf, String email, String telefone) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.telefone = telefone;
 	}
 
 	public Long getId() {
@@ -96,13 +90,6 @@ public class Cliente implements Serializable{
 		this.endereco = endereco;
 	}
 
-	public Set<String> getTelefones() {
-		return telefones;
-	}
-
-	public void setTelefones(Set<String> telefones) {
-		this.telefones = telefones;
-	}
 	
 	public List<Pedido> getPedidos() {
 		return pedidos;
@@ -110,6 +97,14 @@ public class Cliente implements Serializable{
 
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	@Override
@@ -128,6 +123,8 @@ public class Cliente implements Serializable{
 		Cliente other = (Cliente) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 	
 	
 }

@@ -1,15 +1,27 @@
 package com.srg.locadora.dto;
 
-public class DvdNewDTO {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.srg.locadora.domain.Editora;
+
+public class DvdFindDTO {
+	private Long id;
 	
 	private String nome;
 	
-	private Long idEditora;
+	private Editora editora;
 	
 	private Integer quantidadeEmEstoque;
 	
-	public DvdNewDTO() {
+	public DvdFindDTO() {
 		
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -20,14 +32,15 @@ public class DvdNewDTO {
 		this.nome = nome;
 	}
 
-	public Long getIdEditora() {
-		return idEditora;
+	public Editora getEditora() {
+		return editora;
 	}
 
-	public void setIdEditora(Long idEditora) {
-		this.idEditora = idEditora;
+	public void setEditora(Editora editora) {
+		this.editora = editora;
 	}
 
+	@JsonIgnore
 	public Integer getQuantidadeEmEstoque() {
 		return quantidadeEmEstoque;
 	}
@@ -35,7 +48,4 @@ public class DvdNewDTO {
 	public void setQuantidadeEmEstoque(Integer quantidadeEmEstoque) {
 		this.quantidadeEmEstoque = quantidadeEmEstoque;
 	}
-
-	
-	
 }
